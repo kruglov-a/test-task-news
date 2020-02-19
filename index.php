@@ -1,12 +1,8 @@
-<?
-//require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Тестовое задание");
-
-\Bitrix\Main\Page\Asset::getInstance()->addJs('https://rawgit.com/tuupola/jquery_lazyload/2.x/lazyload.js');
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetTitle("Новости");
 ?>
 
-<?$APPLICATION->IncludeComponent("bitrix:news.detail", "test-task", Array(
+<?$APPLICATION->IncludeComponent("bitrix:news.detail", "test-task-news", Array(
 	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
 	"ADD_ELEMENT_CHAIN" => "N",	// Включать название элемента в цепочку навигации
 	"ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
@@ -18,13 +14,13 @@ $APPLICATION->SetTitle("Тестовое задание");
 	"BROWSER_TITLE" => "-",	// Установить заголовок окна браузера из свойства
 	"CACHE_GROUPS" => "Y",	// Учитывать права доступа
 	"CACHE_TIME" => "36000000",	// Время кеширования (сек.)
-	"CACHE_TYPE" => "A",	// Тип кеширования
+	"CACHE_TYPE" => "N",	// Тип кеширования
 	"CHECK_DATES" => "Y",	// Показывать только активные на данный момент элементы
-	"COMPOSITE_FRAME_MODE" => "A",
-	"COMPOSITE_FRAME_TYPE" => "AUTO",
+	"COMPOSITE_FRAME_MODE" => "Y",	// Голосование шаблона компонента по умолчанию
+	"COMPOSITE_FRAME_TYPE" => "DYNAMIC_WITH_STUB",	// Содержимое компонента
 	"DETAIL_URL" => "",	// URL страницы детального просмотра (по умолчанию - из настроек инфоблока)
 	"DISPLAY_BOTTOM_PAGER" => "N",	// Выводить под списком
-	"DISPLAY_DATE" => "Y",	// Выводить дату элемента
+	"DISPLAY_DATE" => "N",	// Выводить дату элемента
 	"DISPLAY_NAME" => "Y",	// Выводить название элемента
 	"DISPLAY_PICTURE" => "Y",	// Выводить детальное изображение
 	"DISPLAY_PREVIEW_TEXT" => "N",	// Выводить текст анонса
@@ -36,8 +32,8 @@ $APPLICATION->SetTitle("Тестовое задание");
 		1 => "",
 	),
 	"FILE_404" => "",	// Страница для показа (по умолчанию /404.php)
-	"IBLOCK_ID" => "11",	// Код информационного блока
-	"IBLOCK_TYPE" => "TEST_TASK",	// Тип информационного блока (используется только для проверки)
+	"IBLOCK_ID" => "1",	// Код информационного блока
+	"IBLOCK_TYPE" => "CONTENT",	// Тип информационного блока (используется только для проверки)
 	"IBLOCK_URL" => "",	// URL страницы просмотра списка элементов (по умолчанию - из настроек инфоблока)
 	"INCLUDE_IBLOCK_INTO_CHAIN" => "N",	// Включать инфоблок в цепочку навигации
 	"MESSAGE_404" => "",
@@ -60,8 +56,9 @@ $APPLICATION->SetTitle("Тестовое задание");
 	"SET_STATUS_404" => "Y",	// Устанавливать статус 404
 	"SET_TITLE" => "Y",	// Устанавливать заголовок страницы
 	"SHOW_404" => "Y",	// Показ специальной страницы
+	"STRICT_SECTION_CHECK" => "N",	// Строгая проверка раздела для показа элемента
 	"USE_PERMISSIONS" => "N",	// Использовать дополнительное ограничение доступа
 	"USE_SHARE" => "N",	// Отображать панель соц. закладок
-), false );?>
+), false);?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

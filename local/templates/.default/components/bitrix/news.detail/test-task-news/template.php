@@ -10,7 +10,6 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
 
 $cp = $this->__component;
 $cp->setResultCacheKeys(['DETAIL_PICTURE']);
