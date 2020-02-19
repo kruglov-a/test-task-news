@@ -20,7 +20,13 @@ $cp->setResultCacheKeys(['DETAIL_PICTURE']);
 	
 	<p id="news-last-date">
 		<?$frame = $this->createFrame('news-last-date', false)->begin();?>
-		<?=date('H часов i минут s секунд назад', time()-strtotime($arResult['ACTIVE_FROM']))?>
+		<?
+		$minutes = $seconds = 0;
+		$leftSecond = time()-strtotime($arResult['ACTIVE_FROM']);
+		$minutes = floor($leftSecond/60);
+		$seconds = $leftSecond-60*$minutes;
+		?>
+		<?=getTextCount($minutes, ['минут', 'минута', 'минуты']).' '.getTextCount($seconds, ['секунд', 'секунда', 'секунды']).' назад'?>
 		<?$frame->end();?>
 	</p>
 	
