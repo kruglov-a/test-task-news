@@ -19,20 +19,25 @@ $cp->setResultCacheKeys(['DETAIL_PICTURE']);
 	<h1><?=$arResult['NAME']?></h1>
 	
 	<p id="news-last-date">
+		<?// Старт композитного кэшерирования динамической части шаблона компонента?>
 		<?$frame = $this->createFrame('news-last-date', false)->begin();?>
 		<?
+		// Подсчет времени, которое прошло от даты начала активности до текущего времени на сервере в количестве минут и секунд
 		$minutes = $seconds = 0;
 		$leftSecond = time()-strtotime($arResult['ACTIVE_FROM']);
 		$minutes = floor($leftSecond/60);
 		$seconds = $leftSecond-60*$minutes;
-		?>
+		// Вывод текста со склоняемыми словами в зависимости от количества минут и секунд?>
 		<?=getTextCount($minutes, ['минут', 'минута', 'минуты']).' '.getTextCount($seconds, ['секунд', 'секунда', 'секунды']).' назад'?>
+		<?// Завершение композитного кэшерирования динамической части шаблона компонента?>
 		<?$frame->end();?>
 	</p>
 	
 	<p id="news-counter">
+		<?// Старт композитного кэшерирования динамической части шаблона компонента?>
 		<?$frame = $this->createFrame('news-counter', false)->begin();?>
 		<?=$arResult['FIELDS']['SHOW_COUNTER']?>
+		<?// Завершение композитного кэшерирования динамической части шаблона компонента?>
 		<?$frame->end();?>
 	</p>
 	

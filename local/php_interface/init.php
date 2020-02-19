@@ -1,4 +1,10 @@
 <?
+/** Функция отвечающая за вывод данных со склонением
+ * @param $number число
+ * @param $arText масив слов используемых при склонения в зависимости от числа
+ * 
+ * @return string
+ */
 function getTextCount($number, $arText)
 {
 	$result = $arText[0];
